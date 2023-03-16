@@ -72,14 +72,9 @@ Le garbage collector s'occupe de libérer la mémoire pour nous. \
 Il ne détruit que les espaces mémoires qui ne sont plus utilisés par personne.
 
 ## Signature
-Il est possède d'avoir plusieurs classes avec le même nom.
+Il est possible d'avoir plusieurs classes avec le même nom.
 ```cs
 public int calculerPaye(int salaire, int jours)
-{
-  // ...
-}
-
-public float calculerPaye(int salaire, int jours)
 {
   // ...
 }

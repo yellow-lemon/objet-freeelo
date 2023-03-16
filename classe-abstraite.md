@@ -38,7 +38,7 @@ public abstract class Toto
 le keyword `base` est l'équivalent du `this` pour le parent.
 
 # Sealed
-Une classe sealed ne peut pas être héritée.
+Une classe/méthode sealed ne peut pas être héritée.
 ```cs
   public sealed class CFinale
   {

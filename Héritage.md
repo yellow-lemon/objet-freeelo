@@ -18,7 +18,7 @@ public class Etudiant : Personne
 
 keyword `protected` : Dans la classe et ses dérivés \
 keyword `private` : Même les dérivés n'ont pas accès \
-Un enfant ne peut pas avoir 2 enfants
+Un enfant ne peut pas avoir 2 parents
 
 ## Déclaration
 ```cs
