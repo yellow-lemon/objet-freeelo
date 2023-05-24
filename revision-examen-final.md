@@ -186,7 +186,8 @@ public double calculerPaye(int salaire, int jours, int bonus) // ERREUR
 }
 ```
 Exemple visual studio:
-![](img/examen2-erreursignature.PNG)
+
+![](img/examen2-erreursignature1.PNG)
 
 ## Surcharge d'opérateurs
 ```cs
