@@ -616,6 +616,27 @@ Ce patron est utilisé lorsque la création d'une instance est complexe ou conso
 ### Singleton
 Il assure qu'une classe n'a qu'une seule instance, et fournit un point d'accès global à celle-ci.
 
+<img src="img/singleton-mvc.png" style="width : 60%">
+
+```cs
+public class Singleton {
+
+    // Crée une instance statique de Singleton
+    private static Singleton instance;
+
+    // Rend le constructeur privé afin qu'il ne puisse pas être instancié de l'extérieur
+    private Singleton() {}
+
+    // Fournit un point d'accès global à l'instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+```
+
 ### Multiton
 C'est une généralisation du patron Singleton, où au lieu d'avoir une seule instance par classe, on a un nombre limité d'instances.
 
@@ -624,6 +645,84 @@ Ce patron est utilisé pour gérer et réutiliser des objets coûteux à créer,
 
 ### Lazy Initialization (Initialisation paresseuse)
 Ce patron crée un objet à la demande, lors de son premier usage, plutôt que lors de l'initialisation du système.
+
+<img src="img/lazyinit-mvc.png" style="width : 60%">
+
+```cs
+public class MyLazyClass
+{
+    private ExpensiveObject _object1;
+    private ExpensiveObject _object2;
+
+    public void UseObject1()
+    {
+        if (_object1 == null)
+        {
+            _object1 = new ExpensiveObject("Object1");
+        }
+        _object1.DoSomething();
+    }
+
+    public void UseObject2()
+    {
+        if (_object2 == null)
+        {
+            _object2 = new ExpensiveObject("Object2");
+        }
+        _object2.DoSomething();
+    }
+}
+
+public class ExpensiveObject
+{
+    private string _name;
+    
+    public ExpensiveObject(string name)
+    {
+        _name = name;
+        Console.WriteLine($"Creating ExpensiveObject {_name}...");
+    }
+
+    public void DoSomething()
+    {
+        Console.WriteLine($"{_name} is doing something...");
+    }
+}
+```
+Main:
+```cs
+static void Main(string[] args)
+{
+    Console.WriteLine("Program started...");
+
+    MyLazyClass myClass = new MyLazyClass();
+
+    Console.WriteLine("Ici");
+
+    // Object1 n'est créé et utilisé que ici
+    myClass.UseObject1();
+
+    // Object2 n'est créé et utilisé que ici
+    myClass.UseObject2();
+
+    Console.WriteLine("Program ended...");
+}
+```
+
+output:
+```
+Program started...
+Ici
+Creating ExpensiveObject Object1...
+Object1 is doing something...
+Creating ExpensiveObject Object2...
+Object2 is doing something...
+Program ended...
+```
+
+Cela montre que chaque objet ExpensiveObject n'est créé que lorsque sa méthode DoSomething est appelée pour la première fois.
+
+
 
 ### Adaptateur (Adapter)
 Il permet de convertir l'interface d'une classe en une autre interface que le client attend. C'est souvent utilisé pour faire fonctionner ensemble des classes qui autrement ne le pourraient pas à cause d'incompatibilités d'interface.
