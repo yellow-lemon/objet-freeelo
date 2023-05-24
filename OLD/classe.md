@@ -180,11 +180,11 @@ public class Toto
 ## Statique
 ```cs
 // dans la classe
-public static int m_age; // Les variables statiques se partagent entre tous les objets
+public static int m_age;
 
 public static int calculerBMI()
 {
-  //...
+  //... Les variables/méthodes statiques se partagent entre tous les objets,
 }
 ```
 Il est impossible d'accéder au dynamique à partir du statique

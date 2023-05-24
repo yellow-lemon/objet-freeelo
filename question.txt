@@ -1,0 +1,34 @@
+QUESTION 1)
+
+Généralités théoriques sur le OO.
+But du OO.
+Principes de programmation OO (classes, objets, statique, dynamique, etc)
+Architecture .NET
+
+QUESTION 2)
+
+Savoir coder un diagramme de classe UML en respectant les normes de programmation OO.
+Constructeurs, accesseurs, indexeurs, données membres, méthodes, etc.
+
+QUESTION 3)
+
+Être capable de nommer, identifier et expliquer les différents principes GRASP.
+Connaitre les avantages d'appliquer l'un ou l'autre des principes.
+
+QUESTION 4)
+
+Pouvoir reconnaitre des patrons de conception GOF en regardant un diagramme de classe.
+
+QUESTION 5)
+
+Pouvoir reconnaitre des patrons de conception GOF en regardant du code.
+
+QUESTION 6)
+
+Ëtre capable de coder soi-même un patron demander dans un petit système.
+Observateur-Observable
+Commande
+Memento
+Fabrique
+ObjectPool
+etc.
