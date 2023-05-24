@@ -10,7 +10,7 @@
 # Théorie Orienté objet (Question 1)
 
 ## Qu'est-ce que la POO
-La programmation orientée objet (POO) est une méthode de structuration de programmes qui regroupe des propriétés et des comportements dans des objets. Le but principal de la POO est d'augmenter la flexibilité et la maintenabilité du code. Les principaux principes de la POO sont :
+La programmation orientée objet (POO) est une méthode de structuration de programmes qui regroupe des propriétés et des comportements dans des objets. Le but principal de la POO est d'augmenter la flexibilité et la maintenabilité du code.
 
 ## Pourquoi O.O?
   - robuste (résistant aux erreurs)
