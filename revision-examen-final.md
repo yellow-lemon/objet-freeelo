@@ -691,9 +691,88 @@ public class Singleton {
 
 ### Multiton
 C'est une généralisation du patron Singleton, où au lieu d'avoir une seule instance par classe, on a un nombre limité d'instances.
+```cs
+public class Multiton
+{
+    private static Dictionary<string, Multiton> instances = new Dictionary<string, Multiton>();
+
+    // Le constructeur est privé pour empêcher la création directe d'instances.
+    private Multiton()
+    {
+    }
+
+    public static Multiton GetInstance(string key)
+    {
+        // Vérifie si une instance pour cette clé existe déjà. 
+        if (!instances.ContainsKey(key))
+        {
+            // Si elle n'existe pas, on la crée et l'ajoute au dictionnaire.
+            instances[key] = new Multiton();
+        }
+
+        // On retourne l'instance associée à la clé.
+        return instances[key];
+    }
+}
+```
 
 ### Object Pool (Pool d'objets)
 Ce patron est utilisé pour gérer et réutiliser des objets coûteux à créer, comme des connexions à une base de données.
+
+<img src="img/objectpool-uml.png" style="width : 60%">
+
+```cs
+public class ObjectPool
+{
+    private List<PooledObject> available = new List<PooledObject>();
+    private List<PooledObject> inUse = new List<PooledObject>();
+
+    public PooledObject GetObject()
+    {
+        PooledObject obj;
+        if (available.Count != 0)
+        {
+            obj = available[0];
+            inUse.Add(obj);
+            available.RemoveAt(0);
+        }
+        else
+        {
+            obj = new PooledObject();
+            inUse.Add(obj);
+        }
+        
+        return obj;
+    }
+
+    public void ReleaseObject(PooledObject obj)
+    {
+        inUse.Remove(obj);
+        available.Add(obj);
+    }
+}
+
+public class PooledObject
+{
+    // Supposez que cet objet ait un coût de création élevé.
+}
+```
+Main:
+```cs
+ObjectPool pool = new ObjectPool();
+
+// Obtenez un nouvel objet à partir du pool.
+PooledObject obj = pool.GetObject();
+
+// Utilisez l'objet.
+
+// Une fois que vous avez fini avec l'objet, vous le libérez.
+pool.ReleaseObject(obj);
+
+```
+Dans cet exemple, lorsque vous demandez un objet, le pool vérifie d'abord s'il a un objet disponible. Si c'est le cas, il vous donne un de ces objets. Sinon, il crée un nouvel objet. Lorsque vous avez terminé avec l'objet, vous le remettez au pool, ce qui permet de le réutiliser ultérieurement.
+
+Cet exemple est très simple et pourrait être étendu pour inclure, par exemple, un nettoyage de l'objet lorsqu'il est remis au pool, une limite sur le nombre d'objets dans le pool, etc.
 
 ### Lazy Initialization (Initialisation paresseuse)
 Ce patron crée un objet à la demande, lors de son premier usage, plutôt que lors de l'initialisation du système.
