@@ -613,10 +613,12 @@ Ce patron est utilisé pour créer des objets sans exposer la logique de créati
 ###  Prototype
 Ce patron est utilisé lorsque la création d'une instance est complexe ou consommatrice en temps. Il permet de copier la première instance et de modifier la copie de façon appropriée.
 
+<img src="img/prototype-uml.png" style="width : 60%">
+
 ```cs
 public abstract class Prototype
 {
-    public abstract Prototype Clone();
+    public abstract object Clone();
 }
 
 public class Sheep : Prototype
@@ -630,7 +632,7 @@ public class Sheep : Prototype
         Breed = breed;
     }
 
-    public override Prototype Clone()
+    public override object Clone()
     {
         return new Sheep(Name, Breed);
     }
