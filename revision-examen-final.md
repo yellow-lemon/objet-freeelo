@@ -1,11 +1,11 @@
-**IMPORTANT : Le document est en partie généré par chatGPT,** j'ai tout généré et modifié pour que ça concorde aux notes de cours mais vérifiez quand même par vous-même.
+**IMPORTANT : Le document est en partie généré par chatGPT,** j'ai tout généré et modifié pour que ça fit avec les notes de cours mais vérifiez quand même par vous-même.
 
 ## Table des matières
 - [Théorie POO (Question 1)](#théorie-orienté-objet-question-1)
 - [Classe (Question 2)](#classe-question-2)
 - [Flèches et relations (Question 2)](#flèches-et-relations-question-2)
 - [GRASP (Question 3)](#grasp-question-3)
-- [Patrons de conception (Question 4, 5 et 6) - PAS TERMINÉ](#patron-de-conception-gof-question-4-et-5)
+- [Patrons de conception (Question 4, 5 et 6) - PAS COMPLET](#patron-de-conception-gof-question-4-5-et-6)
 
 # Théorie Orienté objet (Question 1)
 
