@@ -613,10 +613,60 @@ Ce patron est utilisé pour créer des objets sans exposer la logique de créati
 ###  Prototype
 Ce patron est utilisé lorsque la création d'une instance est complexe ou consommatrice en temps. Il permet de copier la première instance et de modifier la copie de façon appropriée.
 
+```cs
+public abstract class Prototype
+{
+    public abstract Prototype Clone();
+}
+
+public class Sheep : Prototype
+{
+    public string Name { get; set; }
+    public string Breed { get; set; }
+
+    public Sheep(string name, string breed)
+    {
+        Name = name;
+        Breed = breed;
+    }
+
+    public override Prototype Clone()
+    {
+        return new Sheep(Name, Breed);
+    }
+
+    public void DisplaySheepInfo()
+    {
+        Console.WriteLine($"Sheep Name: {Name}, Breed: {Breed}");
+    }
+}
+```
+Main:
+```cs
+static void Main(string[] args)
+{
+    // Création d'un mouton
+    Sheep originalSheep = new Sheep("Dolly", "Finn Dorset");
+
+    // Clonage du mouton
+    Sheep clonedSheep = (Sheep) originalSheep.Clone();
+
+    // Affichage des informations des moutons
+    originalSheep.DisplaySheepInfo();
+    clonedSheep.DisplaySheepInfo();
+
+    // Modification du clone
+    clonedSheep.Name = "Polly";
+    clonedSheep.DisplaySheepInfo();
+    originalSheep.DisplaySheepInfo();
+}
+```
+Note : En C#, l'interface `ICloneable` est généralement utilisée pour implémenter le patron de conception Prototype, car elle fournit une méthode `Clone()` standardisée qui facilite la création d'une copie de l'objet existant.
+
 ### Singleton
 Il assure qu'une classe n'a qu'une seule instance, et fournit un point d'accès global à celle-ci.
 
-<img src="img/singleton-mvc.png" style="width : 60%">
+<img src="img/singleton-uml.png" style="width : 60%">
 
 ```cs
 public class Singleton {
@@ -646,7 +696,7 @@ Ce patron est utilisé pour gérer et réutiliser des objets coûteux à créer,
 ### Lazy Initialization (Initialisation paresseuse)
 Ce patron crée un objet à la demande, lors de son premier usage, plutôt que lors de l'initialisation du système.
 
-<img src="img/lazyinit-mvc.png" style="width : 60%">
+<img src="img/lazyinit-uml.png" style="width : 60%">
 
 ```cs
 public class MyLazyClass
@@ -721,6 +771,8 @@ Program ended...
 ```
 
 Cela montre que chaque objet ExpensiveObject n'est créé que lorsque sa méthode DoSomething est appelée pour la première fois.
+
+Note : En C#, la classe `Lazy<T>` est généralement utilisée pour implémenter le patron de conception d'initialisation paresseuse (Lazy Initialization). Cette classe offre une façon élégante et thread-safe d'instancier une ressource seulement lorsqu'elle est réellement nécessaire.
 
 
 
