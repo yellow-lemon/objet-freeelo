@@ -889,3 +889,66 @@ Il offre la possibilité de restaurer un objet à un état précédent sans viol
 
 ### Stratégie (Strategy)
 Il permet à une stratégie (méthode de traitement) d'être sélectionnée à l'exécution plutôt qu'à la compilation.
+
+### Observateur-Observable (Observer)
+Le patron de conception Observateur/Observable, aussi connu sous le nom de Publier/S'abonner, est un modèle de conception où un objet (Observable) maintient une liste d'observateurs et les notifie automatiquement de tout changement d'état.
+```cs
+// L'interface pour tous les observateurs
+public interface IObserver
+{
+    void Update();
+}
+
+// La classe observable
+public class Observable
+{
+    private List<IObserver> observers = new List<IObserver>();
+
+    public void AddObserver(IObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void RemoveObserver(IObserver observer)
+    {
+        observers.Remove(observer);
+    }
+
+    public void NotifyObservers()
+    {
+        foreach (IObserver observer in observers)
+        {
+            observer.Update();
+        }
+    }
+}
+
+// Un observateur concret
+public class ConcreteObserver : IObserver
+{
+    public void Update()
+    {
+        Console.WriteLine("ConcreteObserver: a change in the Observable class has occurred.");
+    }
+}
+```
+Main:
+```cs
+public class Program
+{
+    static void Main(string[] args)
+    {
+        // Créer un observable
+        Observable observable = new Observable();
+
+        // Créer et ajouter des observateurs
+        ConcreteObserver observer1 = new ConcreteObserver();
+        ConcreteObserver observer2 = new ConcreteObserver();
+        observable.AddObserver(observer1);
+        observable.AddObserver(observer2);
+
+        // Lorsque quelque chose change dans l'observable, il notifie tous les observateurs
+        observable.NotifyObservers();
+    }
+}
+```
